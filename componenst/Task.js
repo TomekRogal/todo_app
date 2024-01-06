@@ -185,7 +185,7 @@ const Task = ({task,refreshApp}) => {
             </form>}
             <ul className="list-group list-group-flush">
                 {allOperations.map(ele=>(
-                    <Operation key={ele.id} operation={ele} onSubmit={onSubmit} onDelete={deleteOperation}/>
+                    <Operation key={ele.id} operation={ele} onSubmit={onSubmit} onDelete={deleteOperation} taskStatus={task.status}/>
                 ))}
             </ul>
         </section>
