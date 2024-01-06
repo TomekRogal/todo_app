@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-const Operation = ({operation, onSubmit, onDelete}) => {
+const Operation = ({operation, onSubmit, onDelete, taskStatus}) => {
     const [operationState, changeState] = useState("normal")
     const [form,setForm] = useState("")
     const handleSubmit = (e) => {
@@ -20,10 +20,10 @@ const Operation = ({operation, onSubmit, onDelete}) => {
                     {operation.description}
                 </div>
                 <div>
-                    <button className="btn btn-outline-success btn-sm mr-2" onClick={()=>changeState("addTime")}>
+                    {taskStatus === "open" && <button className="btn btn-outline-success btn-sm mr-2" onClick={()=>changeState("addTime")}>
                         Add time
                         <i className="fas fa-clock ml-1"></i>
-                    </button>
+                    </button>}
 
                     <button onClick={deleteOperation} className="btn btn-outline-danger btn-sm"><i className="fas fa-trash"></i></button>
                 </div>
@@ -58,10 +58,10 @@ const Operation = ({operation, onSubmit, onDelete}) => {
           </span>
         </div>
         <div>
-            <button className="btn btn-outline-success btn-sm mr-2" onClick={()=>changeState("addTime")} >
+            {taskStatus === "open" && <button className="btn btn-outline-success btn-sm mr-2" onClick={()=>changeState("addTime")} >
                 Add time
                 <i className="fas fa-clock ml-1"></i>
-            </button>
+            </button>}
             <button onClick={deleteOperation} className="btn btn-outline-danger btn-sm"><i className="fas fa-trash"></i></button>
         </div>
     </li>}
